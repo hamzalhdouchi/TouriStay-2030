@@ -11,7 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        DB::statement("CREATE TABLE client (
+            role_id BIGINT CHECK (role_id = 1)
+        ) INHERITS (users);");
+        DB::statement("ALTER TABLE client ADD PRIMARY KEY (id)");
     }
 
     /**
