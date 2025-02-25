@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('favori', function (Blueprint $table) {
+       
+
+        Schema::create('équipement', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId( 'proprietaire_id')->constrained('proprietaire');
+            $table->boolean('wifi')->default(0);
+            $table->boolean('Climatisation')->default(0); 
+            $table->boolean('parking')->default(0);
+            $table->boolean('piscine')->default(0);
+            $table->foreignId( 'propertie_id')->constrained('properties');
             $table->timestamps();
         });
     }

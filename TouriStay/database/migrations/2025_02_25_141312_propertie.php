@@ -23,10 +23,6 @@ return new class extends Migration
         $table->string('adresse');
         $table->string('ville');
         $table->string('code_postal');
-        $table->boolean('wifi')->default(0);
-        $table->boolean('Climatisation')->default(0); 
-        $table->boolean('parking')->default(0);
-        $table->boolean('piscine')->default(0);
         $table->boolean('disponibilite')->default(0);
         $table->string('image');
         $table->foreignId('user_id')->constrained('users');
