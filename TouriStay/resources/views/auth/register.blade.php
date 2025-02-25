@@ -20,25 +20,14 @@
             
             <!-- Onglets -->
             <div class="flex mb-6">
-                <button id="loginTab" class="flex-1 py-2 px-4 text-center border-b-2 border-red-500 text-red-500 font-medium">Se connecter</button>
-                <button id="signupTab" class="flex-1 py-2 px-4 text-center text-gray-500 font-medium">S'inscrire</button>
+                <form action="{{route('login')}}" method="get">
+                    <button id="loginTab" class="flex-1 py-2 px-4 text-center text-gray-500 font-medium">Se connecter</button>
+                </form>
+                <form action="{{route('inscrer')}}" method="get">
+                    <button id="signupTab" class="flex-1 py-2 px-4 text-center border-b-2 border-red-500 text-red-500 font-medium">S'inscrire</button>
+                </form>
             </div>
             
-            <!-- Formulaire de connexion -->
-            {{-- <form id="loginForm" method="POST" action="{{ route('login') }}">
-                @csrf
-                <div class="mb-4">
-                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Adresse e-mail</label>
-                    <input type="email" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="vous@exemple.com" required>
-                </div>
-                <div class="mb-6">
-                    <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Mot de passe</label>
-                    <input type="password" id="password" name="password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="Votre mot de passe" required>
-                </div>
-                <button type="submit" class="w-full bg-gradient-to-r from-red-600 to-red-400 text-white font-bold py-2 px-4 rounded-md hover:from-red-700 hover:to-red-500 transition duration-300">
-                    Se connecter
-                </button>
-            </form> --}}
             
             <!-- Formulaire d'inscription -->
             <form action="{{ route('register') }}" method="POST" id="signupForm"  enctype="multipart/form-data">
@@ -127,7 +116,8 @@
             </div>
         </div>
     </div>
-    {{-- @include('alert'); --}}
+    @include('auth.alert')
+
 
     <script>
         const loginTab = document.getElementById('loginTab');

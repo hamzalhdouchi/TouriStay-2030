@@ -19,14 +19,14 @@
             <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Bienvenue</h2>
             
             
-            {{-- <div class="flex mb-6">
-                <form action="{{route('Log in')}}" method="post">
-                    <button type="submit" id="loginTab" class="flex-1 py-2 px-4 text-center border-b-2 border-red-500 text-red-500 font-medium">Se connecter</button>
+            <div class="flex mb-6">
+                <form action="{{route('login')}}" method="post">
+                    <button  id="loginTab" class="flex-1 py-2 px-4 text-center border-b-2 border-red-500 text-red-500 font-medium">Se connecter</button>
                 </form>
-                <form action="{{route('register')}}" method="post">
+                <form action="{{route('inscrer')}}" method="get">
                     <button id="signupTab" class="flex-1 py-2 px-4 text-center text-gray-500 font-medium">S'inscrire</button>
                 </form>
-            </div> --}}
+            </div>
             
             <!-- Formulaire de connexion -->
             <form id="loginForm" method="post" action="{{ route('login') }}">
@@ -58,10 +58,6 @@
                             {{ __('Forgot your password?') }}
                         </a>
                     @endif
-        
-                    <x-primary-button class="ms-3">
-                        {{ __('Log in') }}
-                    </x-primary-button>
                 </div>
             
             <div class="mt-6 flex items-center justify-between">
@@ -83,7 +79,7 @@
             </div>
         </div>
     </div>
-    @include('alert');
+    {{-- @include('alert'); --}}
 
    
 </body>
