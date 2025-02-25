@@ -11,15 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-       
-
-        Schema::create('équipement', function (Blueprint $table) {
-            $table->id();
-            $table->boolean('wifi')->default(0);
-            $table->boolean('Climatisation')->default(0); 
-            $table->boolean('parking')->default(0);
-            $table->boolean('piscine')->default(0);
-            $table->timestamps();
+        Schema::create('équipement_propertie', function (Blueprint $table) {
+            $table->foreignId( 'propertie_id')->constrained('properties');
+            $table->foreignId( 'equipment_id')->constrained('équipement');
         });
     }
 
