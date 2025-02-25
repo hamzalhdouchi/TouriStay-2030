@@ -14,9 +14,9 @@ return new class extends Migration
     public function up(): void
     {
         DB::statement("CREATE TABLE admin (
-            role_id INT CHECK (role_id = 3)
+            role_id BIGINT CHECK (role_id = 3)
         ) INHERITS (users);");
-        DB::statement("ALTER TABLE admin ADD PRIMARY KEY (user_id);");
+        DB::statement("ALTER TABLE admin ADD PRIMARY KEY (id)");
     }
 
     /**
@@ -24,6 +24,5 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
     }
 };
