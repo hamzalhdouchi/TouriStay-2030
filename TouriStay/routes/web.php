@@ -3,7 +3,6 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\propertiesController;
 
@@ -17,9 +16,9 @@ use App\Http\Controllers\propertiesController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome')->middleware("auth");
+Route::get( '/', [propertiesController::class, 'readPropretis'])->name('properties.read');
+
+
 
 Route::get('/login', function () {
     return view('auth.login');
@@ -54,15 +53,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/Profile', [AdminController::class, 'readById'])->name('user.Profile');
     Route::put( '/user/{id}', [UserController::class, 'update'])->name('user.changeProfile');
 });
-
-
-Route::post('/store',[userController::class,'store'])->name('create_user');
-Route::post('/login', [UserController::class, 'login'])->name('user.login');
-Route::get('/dashboard', [AdminController::class, 'read'])->name('user.read');
-Route::post('/properties', [propertiesController::class, 'create'])->name('properties.create');
-Route::get( '/properties', [propertiesController::class, 'readPropretis'])->name('properties.read');
-Route::post( '/modifer/{id}', [propertiesController::class, 'propertiesById'])->name('propertie.modifer');
-Route::delete( '/destroy/{id}', [propertiesController::class, 'destroy'])->name('propertie.destroy');
 
 
 require __DIR__.'/auth.php';
