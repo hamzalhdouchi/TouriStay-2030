@@ -274,22 +274,13 @@
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Équipements</label>
                             <div class="grid grid-cols-2 gap-2">
+                                @foreach ($équipements as $equipment)
+        
                                 <label class="flex items-center space-x-2">
-                                    <input type="checkbox" name="wifi" value="1" class="rounded text-red-600">
-                                    <span>WiFi</span>
+                                    <input type="checkbox" name="equipments[]" value="{{ $equipment->id }}" class="rounded text-red-600">
+                                    <span> {{ $equipment->name }}</span>
                                 </label>
-                                <label class="flex items-center space-x-2">
-                                    <input type="checkbox" name="Climatisation" value="1" class="rounded text-red-600">
-                                    <span>Climatisation</span>
-                                </label>
-                                <label class="flex items-center space-x-2">
-                                    <input type="checkbox" name="piscine" value="1" class="rounded text-red-600">
-                                    <span>Piscine</span>
-                                </label>
-                                <label class="flex items-center space-x-2">
-                                    <input type="checkbox" name="parking" value="1" class="rounded text-red-600">
-                                    <span>Parking</span>
-                                </label>
+                            @endforeach
                             </div>
                         </div>
     

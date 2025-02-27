@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\properties;
+use App\Models\équipement;
 use Illuminate\Http\Request;
 
 class propertiesController extends Controller
@@ -10,6 +11,7 @@ class propertiesController extends Controller
     public function create(Request $request)
     {
 
+       
         
             $ValidationData = $request->validate([
                 'titre' => 'required|string|min:5|max:200',
@@ -22,6 +24,8 @@ class propertiesController extends Controller
                 'ville' => 'required|string|min:2|max:100',
                 'code_postal' => 'required|string|min:2|max:10',
                 'user_id' => 'required|integer|exists:users,id',
+                'equipments' => 'nullable|array',
+                'equipments.*' => 'exists:equipments,id',
                 'image' => 'required|image|max:2000', 
             ]);
         
@@ -31,7 +35,7 @@ class propertiesController extends Controller
                 session()->flash('error', 'L image est requise!');
             };
         
-            properties::create([
+            $property = properties::create([
                 'titre' => $ValidationData['titre'],
                 'description' => $ValidationData['description'],
                 'prix_par_nuit' => $ValidationData['prix_par_nuit'],
@@ -45,6 +49,9 @@ class propertiesController extends Controller
                 'image' => $imagePath,
             ]);
 
+            if ($request->has('equipments')) {
+                $property->equipments()->attach($request->equipments);
+            }
             session()->flash('success', 'Propriété ajoutée avec succès!');
             return back();   
         }
@@ -52,14 +59,14 @@ class propertiesController extends Controller
         public function readPropretis()
         {
             $properties = properties::All();
-            
-            return view('location',compact('properties'));
+            $équipements  = équipement::all();
+           
+            return view('location',compact('properties','équipements'));
         }
 
         public function propertiesById($id)
         {
             $propertie = properties::find($id);
-            
             return view('form',compact('propertie'));
         }
 

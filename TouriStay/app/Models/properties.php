@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\équipement;
+
 
 class properties extends Model
 {
@@ -25,4 +27,10 @@ class properties extends Model
         'image',
         'disponibilite',
     ];
+
+    public function equipments()
+    {
+        return $this->belongsToMany(équipement::class, 'property_equipments', 'property_id', relatedPivotKey: 'equipment_id');
+    }
+
 }

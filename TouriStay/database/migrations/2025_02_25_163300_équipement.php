@@ -13,12 +13,9 @@ return new class extends Migration
     {
        
 
-        Schema::create('équipement', function (Blueprint $table) {
+        Schema::create('equipments', function (Blueprint $table) {
             $table->id();
-            $table->boolean('wifi')->default(0);
-            $table->boolean('Climatisation')->default(0); 
-            $table->boolean('parking')->default(0);
-            $table->boolean('piscine')->default(0);
+            $table->string('name');
             $table->timestamps();
         });
     }
