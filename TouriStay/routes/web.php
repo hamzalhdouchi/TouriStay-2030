@@ -39,18 +39,20 @@ Route::post('/login', [UserController::class, 'login'])->name('user.login');
 Route::get('/dashboard', [AdminController::class, 'read'])->name('user.read');
 Route::post('/properties', [propertiesController::class, 'create'])->name('properties.create');
 Route::get( '/properties', [propertiesController::class, 'readPropretis'])->name('properties.read');
-Route::post( '/modifer/{id}', [propertiesController::class, 'propertiesById'])->name('propertie.modifer');
+Route::get( '/modifer/{id}', [propertiesController::class, 'propertiesById'])->name('propertie.modifer');
 Route::delete( '/destroy/{id}', [propertiesController::class, 'destroy'])->name('propertie.destroy');
-
+Route::patch('/update/{id}', [propertiesController::class, 'update'])->name('update.properties');
+Route::get('/Home/{id}', [propertiesController::class, 'readAllProperties'])->name('readAll.properties');
+Route::get('/Home', [propertiesController::class, 'readAllProperties'])->name('readAll.properties');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('/logout', [UserController::class, 'logout'])->name('user.logout');
     Route::delete('/user/{id}', [AdminController::class, 'destroy'])->name('user.destroy');
     Route::put('/status/{id}', [AdminController::class, 'changeStatus'])->name('user.changeStatus');
-    Route::get('/Profile', [AdminController::class, 'readById'])->name('user.Profile');
+    Route::get('/profile', [AdminController::class, 'readById'])->name('user.Profile');
     Route::put( '/user/{id}', [UserController::class, 'update'])->name('user.changeProfile');
 });
 

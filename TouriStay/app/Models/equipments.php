@@ -12,6 +12,6 @@ class equipments extends Model
 
     public function properties()
     {
-        return $this->belongsToMany(properties::class, 'property_equipments', 'equipment_id', 'property_id');
+        return $this->belongsToMany(properties::class, 'equipement_propertie', 'equipment_id', 'propertie_id');
     }
 }

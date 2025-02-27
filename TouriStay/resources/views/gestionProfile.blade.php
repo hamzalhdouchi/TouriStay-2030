@@ -163,6 +163,6 @@
             </div>
         </div>
     </footer>
-    @include('alert');
+    @include('auth.alert');
 </body>
 </html>

@@ -44,15 +44,29 @@
             <div class="bg-white shadow">
                 <div class="px-6 py-4 flex justify-between items-center">
                     <h1 class="text-2xl font-bold text-gray-800">Gestion des Propriétés</h1>
-                    <button onclick="openModal()" 
-                            class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 flex items-center">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                        </svg>
-                        Ajouter une Propriété
-                    </button>
+                    <div class="flex gap-4">
+                        <!-- Bouton Ajouter une Propriété -->
+                        <button onclick="openModal()" 
+                                class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                            </svg>
+                            Ajouter une Propriété
+                        </button>
+            
+                        <!-- Bouton Gérer le Profil -->
+                        <a href="{{ route('user.Profile') }}" 
+                           class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                      d="M5.121 17.804A9.004 9.004 0 0112 3a9.004 9.004 0 016.879 14.804M15 21H9m6 0a3 3 0 00-6 0"/>
+                            </svg>
+                            Gérer le Profil
+                        </a>
+                    </div>
                 </div>
             </div>
+            
 
             <!-- Stats Cards -->
             <div class="p-6 grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -193,16 +207,7 @@
 
                     <!-- Pagination -->
                     <div class="px-6 py-4 flex items-center justify-between border-t">
-                        <div class="text-sm text-gray-500">
-                            Affichage de 1 à 10 sur 567 propriétés
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="px-3 py-1 border rounded hover:bg-gray-50">Précédent</button>
-                            <button class="px-3 py-1 border rounded bg-red-600 text-white">1</button>
-                            <button class="px-3 py-1 border rounded hover:bg-gray-50">2</button>
-                            <button class="px-3 py-1 border rounded hover:bg-gray-50">3</button>
-                            <button class="px-3 py-1 border rounded hover:bg-gray-50">Suivant</button>
-                        </div>
+                        {{-- {{ $propertie->links() }} --}}
                     </div>
                 </div>
             </div>

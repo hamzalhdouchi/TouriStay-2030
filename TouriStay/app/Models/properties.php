@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\équipement;
+use App\Models\equipments;
+use App\Models\User;
 
 
 class properties extends Model
@@ -20,17 +21,20 @@ class properties extends Model
         'adresse',
         'ville',
         'code_postal',
-        'wifi',
-        'Climatisation',
-        'piscine',
-        'parking',
+        'user_id',
         'image',
         'disponibilite',
     ];
 
     public function equipments()
     {
-        return $this->belongsToMany(équipement::class, 'property_equipments', 'property_id', relatedPivotKey: 'equipment_id');
+        return $this->belongsToMany(equipments::class, 'equipement_propertie', 'propertie_id',  'equipment_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    
 
 }

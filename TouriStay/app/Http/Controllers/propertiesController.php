@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\properties;
-use App\Models\équipement;
+use App\Models\equipments;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth; 
 class propertiesController extends Controller
 {
     public function create(Request $request)
     {
 
        
-        
+
             $ValidationData = $request->validate([
                 'titre' => 'required|string|min:5|max:200',
                 'description' => 'required|string|min:5',
@@ -34,7 +34,6 @@ class propertiesController extends Controller
         }else {
                 session()->flash('error', 'L image est requise!');
             };
-        
             $property = properties::create([
                 'titre' => $ValidationData['titre'],
                 'description' => $ValidationData['description'],
@@ -58,16 +57,18 @@ class propertiesController extends Controller
 
         public function readPropretis()
         {
-            $properties = properties::All();
-            $équipements  = équipement::all();
+            $properties = properties::paginate(6);
+            $équipements  = equipments::all()->where(Auth::id());
            
             return view('location',compact('properties','équipements'));
         }
 
         public function propertiesById($id)
         {
-            $propertie = properties::find($id);
-            return view('form',compact('propertie'));
+            $propertie = properties::find(2);
+            $équipements  = equipments::all();
+        
+            return view('form',compact('propertie','équipements'));
         }
 
         public function destroy($id)
@@ -94,19 +95,21 @@ class propertiesController extends Controller
                 'adresse' => 'required|string',
                 'ville' => 'required|string|min:2|max:100',
                 'code_postal' => 'required|string|min:2|max:10',
-                'wifi' => 'sometimes|boolean',
-                'climatisation' => 'sometimes|boolean',
-                'piscine' => 'sometimes|boolean',
-                'parking' => 'sometimes|boolean',
+                'equipments' => 'nullable|array',
+                'equipments.*' => 'exists:equipments,id',
                 'image' => 'required|image|max:2000', 
             ]);
 
             $propertie = properties::find($id);
             if (!$propertie) {
-                session()->flash('error', 'User not found');
+                session()->flash('errur', 'User not found');
                 return back();
             }
 
+            if ($request->has('image')) {
+                // unlink(storage_path("app/" . $propertie->image));
+                $imagePath = $request->file('image')->store('public/properties'); 
+             }
             $propertie->titre = $request->titre;
             $propertie->description = $request->description;
             $propertie->caution = $request->caution;
@@ -115,19 +118,28 @@ class propertiesController extends Controller
             $propertie->adresse = $request->adresse;
             $propertie->ville = $request->ville;
             $propertie->code_postal = $request->code_postal;
-            $propertie->wifi = $request->wifi ?? 0;
-            $propertie->climatisation = $request->climatisation ?? 0;
-            $propertie->piscine = $request->piscine ?? 0;
-            $propertie->parking = $request->parking ?? 0;
-            if ($request->has('image')) {
-               $imagePath = $request->file('image')->store('public','properties'); 
-               $propertie->image = $imagePath;
+            $propertie->image = $imagePath;
+           
+            if ($request->has('equipments')) {
+                $propertie->equipments()->sync($request->equipments);
             }
             
-            $propertie->save;
-
+            $propertie->save();
+            
             session()->flash('success', 'properties updated successfully');
-            return back();
+            return redirect('/properties');
+        }
+
+        public function readAllProperties($n = null)
+        {
+            if ($n == null) {
+                $properties = properties::all();
+                return view('Home',compact('properties'));
+            }else{
+                $properties = properties::paginate($n);
+                return view('Home',compact('properties'));
+            }
+            
         }
         
     }

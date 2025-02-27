@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\équipement;
+use App\Models\equipments;
 class EquipmentSeeder extends Seeder
 {
     /**
@@ -12,7 +12,7 @@ class EquipmentSeeder extends Seeder
      */
     public function run(): void
     {
-        équipement::insert([
+        equipments::insert([
             ['name' => 'WiFi'],
             ['name' => 'Parking'],
             ['name' => 'Swimming Pool'],
