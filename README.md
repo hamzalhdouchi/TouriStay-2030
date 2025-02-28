@@ -21,18 +21,9 @@ TouriStay 2030 est une plateforme facilitant la location de maisons et d’appar
 - 📊 **Statistiques** sur les utilisateurs, locations et annonces actives.
 
 ## 📌 Liens vers les diagrammes
-
 Vous pouvez consulter les différents diagrammes du projet via les liens suivants :
 
+✨ Développé avec ❤️ pour TouriStay 2030 🚀)
 - [Diagramme de cas d'utilisation](https://drive.google.com/file/d/1OJRHR5rrT6C_HFbpoQe63WwL3TJibsEQ/view?usp=sharing)
 - [Diagramme de classe](https://drive.google.com/file/d/1rvncvtoNovgT5yQjpPQt8-NPYPccCdW8/view?usp=sharing)
-- 
-✨ Développé avec ❤️ pour TouriStay 2030 🚀)
-- [Diagramme de séquence](#)
-- [Diagramme d'architecture](#)
 
-✨ Développé avec ❤️ pour TouriStay 2030 🚀)
-- [Diagramme de séquence](#)
-- [Diagramme d'architecture](#)
-
-✨ Développé avec ❤️ pour TouriStay 2030 🚀
