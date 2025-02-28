@@ -33,7 +33,13 @@
                     </svg>
                     <span class="ml-2 text-airbnb font-bold text-xl">airbnb</span>
                 </div>
-
+                <nav class="hidden md:flex space-x-6">
+                    <a href="{{route('readAll.properties')}}" class="font-medium text-rose-500">Accueil</a>
+                    <a href="#" class="font-medium">Explorer</a>
+                    <a href="{{route('favoris.index')}}" class="font-medium ">Favoris</a>
+                    <a href="#" class="font-medium">Catégories</a>
+                </nav>
+                
                 <!-- User Menu -->
                 <div class="flex items-center space-x-4">
                     <div class="hidden md:block">

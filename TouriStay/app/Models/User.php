@@ -59,4 +59,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Properties::class, 'favori', 'user_id', 'propertie_id');
     }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function hasRole($roleName)
+    {
+        return $this->role->role_nom === $roleName;
+    }
 }

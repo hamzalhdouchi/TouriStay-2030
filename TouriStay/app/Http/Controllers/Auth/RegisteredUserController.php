@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
                 'password' => ['required', 'confirmed', Rules\Password::defaults()],
                 'telephone' => ['required', 'string', 'min:10', 'max:30'],
                 'image' => ['required', 'image'],
-                'role_id' => ['required', 'integer', 'exists:role,id'],
+                'role_id' => ['required', 'integer', 'exists:roles,id'],
             ]);
         
 

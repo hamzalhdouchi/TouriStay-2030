@@ -18,9 +18,9 @@
             
             <!-- Navigation -->
             <nav class="hidden md:flex space-x-6">
-                <a href="#" class="font-medium">Accueil</a>
+                <a href="{{route('readAll.properties')}}" class="font-medium">Accueil</a>
                 <a href="#" class="font-medium">Explorer</a>
-                <a href="#" class="font-medium text-rose-500">Favoris</a>
+                <a href="{{route('favoris.index')}}" class="font-medium  text-rose-500">Favoris</a>
                 <a href="#" class="font-medium">Catégories</a>
             </nav>
             

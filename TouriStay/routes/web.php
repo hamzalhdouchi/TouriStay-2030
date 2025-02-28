@@ -16,8 +16,21 @@ use App\Http\Controllers\propertiesController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get( '/', [propertiesController::class, 'readPropretis'])->name('properties.read');
+Route::get('/', function () {
+    $user = Auth::user();
 
+    if ($user->hasRole('admin')) {
+        return redirect('/dashboard');
+    } elseif ($user->hasRole('client')) {
+        return redirect('/Home');
+    } elseif ($user->hasRole('proprietaire')) {
+        return redirect('/properties');
+    }
+// dd($user->hasRole('admin'));
+dd($user->hasRole('client'));
+dd($user->hasRole('proprietaire'));
+    return redirect('/Home');
+})->middleware(['auth']);
 
 
 Route::get('/login', function () {
@@ -35,35 +48,33 @@ Route::get('/inscrer', function () {
 
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-Route::post('/store',[userController::class,'store'])->name('create_user');
-Route::post('/login', [UserController::class, 'login'])->name('user.login');
-Route::get('/dashboard', [AdminController::class, 'read'])->name('user.read');
-Route::post('/logout', [UserController::class, 'logout'])->name('user.logout');
-Route::post('/properties', [propertiesController::class, 'create'])->name('properties.create');
-Route::get( '/properties', [propertiesController::class, 'readPropretis'])->name('properties.read');
-Route::get( '/properties', [AdminController::class, 'readPropretis'])->name('properties.readAdmin');
-Route::post( '/modifer/{id}', [propertiesController::class, 'propertiesById'])->name('propertie.modifer');
-Route::delete( '/destroy/{id}', [propertiesController::class, 'destroy'])->name('propertie.destroy');
-Route::delete( '/destroye/{id}', [AdminController::class, 'destroyProperties'])->name('propertie.destroyProperties');
 
-Route::patch('/update/{id}', [propertiesController::class, 'update'])->name('update.properties');
-Route::get('/Home', [propertiesController::class, 'readAllProperties'])->name('readAll.properties');
-Route::POST('/favore/{id}', [propertiesController::class, 'favoriteCreate'])->name('favore.create');
-Route::delete('/favorites/{id}', [propertiesController::class, 'removeFavorite'])->name('favore.remove');
-Route::get('/favoris', [propertiesController::class, 'showFavoris'])->name('favoris.index');
-Route::get('/search', [propertiesController::class, 'dynamicSearch'])->name('properties.dynamicSearch');
+Route::get('/dashboard', [AdminController::class, 'read'])->name('user.read')->middleware(['auth', 'role:admin']);
+Route::post('/logout', [UserController::class, 'logout'])->name('user.logout')->middleware(['auth', 'role:admin']);
+Route::post('/properties', [propertiesController::class, 'create'])->name('properties.create')->middleware(['auth', 'role:proprietaire']);
+Route::get( '/properties', [propertiesController::class, 'readPropretis'])->name('properties.read')->middleware(['auth', 'role:proprietaire']);
+Route::get( '/propertiese', [AdminController::class, 'readPropretis'])->name('properties.readAdmin')->middleware(['auth', 'role:admin']);
+Route::post( '/modifer/{id}', [propertiesController::class, 'propertiesById'])->name('propertie.modifer')->middleware(['auth', 'role:proprietaire']);
+Route::delete( '/destroy/{id}', [propertiesController::class, 'destroy'])->name('propertie.destroy')->middleware(['auth', 'role:proprietaire']);
+Route::delete( '/destroye/{id}', [AdminController::class, 'destroyProperties'])->name('propertie.destroyProperties')->middleware(['auth', 'role:admin']);
+
+Route::patch('/update/{id}', [propertiesController::class, 'update'])->name('update.properties')->middleware(['auth', 'role:proprietaire']);
+Route::get('/Home', [propertiesController::class, 'readAllProperties'])->name('readAll.properties')->middleware(['auth', 'role:client']);
+Route::POST('/favore/{id}', [propertiesController::class, 'favoriteCreate'])->name('favore.create')->middleware(['auth', 'role:client']);
+Route::delete('/favorites/{id}', [propertiesController::class, 'removeFavorite'])->name('favore.remove')->middleware(['auth', 'role:client']);
+Route::get('/favoris', [propertiesController::class, 'showFavoris'])->name('favoris.index')->middleware(['auth', 'role:client']);
+Route::get('/search', [propertiesController::class, 'dynamicSearch'])->name('properties.dynamicSearch')->middleware(['auth', 'role:client']);
 
 
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::post('/logout', [UserController::class, 'logout'])->name('user.logout');
-    Route::delete('/user/{id}', [AdminController::class, 'destroy'])->name('user.destroy');
-    Route::put('/status/{id}', [AdminController::class, 'changeStatus'])->name('user.changeStatus');
-    Route::get('/profile', [AdminController::class, 'readById'])->name('user.Profile');
-    Route::put( '/user/{id}', [UserController::class, 'update'])->name('user.changeProfile');
-});
+    Route::post('/logout', [UserController::class, 'logout'])->name('user.logout')->middleware(['auth', 'role:admin']);
+    Route::delete('/user/{id}', [AdminController::class, 'destroy'])->name('user.destroy')->middleware(['auth', 'role:admin']);
+    Route::put('/status/{id}', [AdminController::class, 'changeStatus'])->name('user.changeStatus')->middleware(['auth', 'role:admin']);
+    Route::get('/profile', [AdminController::class, 'readById'])->name('user.Profile')->middleware(['auth']);
+    Route::put( '/user/{id}', [UserController::class, 'update'])->name('user.changeProfile')->middleware(['auth', 'role:admin']);
+
 
 
 require __DIR__.'/auth.php';

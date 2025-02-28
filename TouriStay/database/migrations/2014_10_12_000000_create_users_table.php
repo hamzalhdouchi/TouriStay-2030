@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->enum('status', ['actif', 'inactif'])->default('actif');
             $table->string('image');
-            $table->foreignId('role_id')->constrained('role');
+            $table->foreignId('role_id')->constrained('roles');
             $table->rememberToken();
             $table->timestamps();
         });

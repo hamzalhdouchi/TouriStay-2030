@@ -59,12 +59,12 @@
                             </button>
                         </div>
                         <span class="text-gray-600 ml-4">{{ Auth::user()->name }}</span>
-                        {{-- <form action="{{ route('user.logout') }}" method="POST">
+                        <form action="{{ route('user.logout') }}" method="POST">
                             @csrf
                             <button type="submit" class="ml-4 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition duration-200 focus:outline-none focus:ring-2 focus:ring-red-600">
                                 Déconnexion
                             </button>
-                        </form> --}}
+                        </form>
                         
                     </div>
                 </div>
