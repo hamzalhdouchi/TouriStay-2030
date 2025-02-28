@@ -134,15 +134,19 @@ class propertiesController extends Controller
         {
             
             $user = Auth::user();
-            $n = $request->page ?? 100; 
-            
             $favoris = $user->favoris->pluck('id');
 
-            $properties = Properties::with('equipments', 'favoris')->paginate($n);
-            // if ($properties->currentPage() > $properties->lastPage()) {
-            //     return redirect()->route('readAll.properties', ['page' => $properties->lastPage()]);
-            // }
-            return view('Home', compact('properties', 'favoris'));
+            
+            
+            
+            $perPage = $request->input('perPage', default: 10);
+            if (!in_array($perPage, [2, 10, 15])) {
+                $perPage = 10;
+            }
+            
+            $properties = Properties::with('equipments', 'favoris')->paginate($perPage);
+            $properties->appends(['perPage'=>$perPage]);
+            return view('Home', compact('properties', 'favoris','perPage'));
         }
         
         

@@ -69,57 +69,83 @@
     </header>
 
     <!-- Main Content -->
+<main class="container mx-auto px-4 max-w-full py-6">
+    <!-- Hero Section -->
+    <div class="relative bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 overflow-hidden mb-8 rounded-xl">
+        <!-- Hero Background with Overlay -->
+        <div class="absolute inset-0">
+            <img 
+                src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" 
+                alt="Beautiful vacation destinations" 
+                class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-black opacity-40"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative max-w-7xl mx-auto px-4 py-24 sm:py-32 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl mb-6">
+                Trouvez votre prochain séjour de rêve
+            </h1>
+            <p class="mt-6 text-xl text-white max-w-3xl">
+                Découvrez des logements uniques et vivez des expériences authentiques partout dans le monde.
+            </p>
+
+            <!-- Search Form - Preserving PHP/Blade Logic -->
+            <div class="w-full max-w-3xl mt-10">
+                <div class="relative mb-8">
+                    <form method="GET" action="{{ route('properties.dynamicSearch') }}" class="flex items-center justify-between bg-white rounded-full border border-gray-300 shadow-lg hover:shadow-xl transition-shadow">
+                        <div class="flex-grow flex items-center">
+                            <div class="py-3 px-8">
+                                <div class="text-sm font-medium">Destination</div>
+                                <input type="text" name="search" value="{{ request('search') }}" placeholder="Où souhaitez-vous aller ?" class="w-full outline-none text-gray-600">
+                            </div>
+                        </div>
+                        <button class="bg-airbnb hover:bg-airbnb-dark text-white p-4 m-2 rounded-full flex items-center justify-center transition-colors">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                            <span class="ml-2 font-medium">Rechercher</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Popular Destinations -->
+            <div class="mt-12">
+                <div class="text-white text-lg font-medium mb-4">Destinations populaires</div>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <button class="px-4 py-2 bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-sm rounded-full text-white transition">Paris</button>
+                    <button class="px-4 py-2 bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-sm rounded-full text-white transition">Nice</button>
+                    <button class="px-4 py-2 bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-sm rounded-full text-white transition">Marseille</button>
+                    <button class="px-4 py-2 bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-sm rounded-full text-white transition">Lyon</button>
+                    <button class="px-4 py-2 bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-sm rounded-full text-white transition">Bordeaux</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <!-- Gardez votre section de filtres existante ici -->
+    <!-- Main Content -->
     <main class="container mx-auto px-4 max-w-full pl-10 pr-10 py-6">
         <!-- Search Bar -->
-        <div class="relative mb-8">
-            <form method="GET" action="{{ route('properties.dynamicSearch') }}" class="flex items-center justify-between bg-white rounded-full border border-gray-300 shadow-lg hover:shadow-xl transition-shadow">
-                <div class="flex-grow flex items-center">
-                    <div class="py-3 px-8">
-                        <div class="text-sm font-medium">Destination</div>
-                        <input type="text" name="search" value="{{ request('search') }}" placeholder="Où souhaitez-vous aller ?" class="w-full outline-none text-gray-600">
-                    </div>
-                </div>
-                <button class="bg-airbnb hover:bg-airbnb-dark text-white p-4 m-2 rounded-full flex items-center justify-center transition-colors">
-                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
-                    <span class="ml-2 font-medium">Rechercher</span>
-                </button>
-            </form>
-        </div>
+       
         
 
         <!-- Filters -->
         <div class="overflow-x-auto pb-4 mb-8">
-            <div class="flex space-x-4">
+            <form action="{{ route('readAll.properties') }}" method="GET">
+                @csrf
                 <label for="pagination" class="text-sm font-medium">Afficher par :</label>
-                
-                <form action="{{ route('readAll.properties') }}" method="GET" class="inline-block">
-                    @csrf
-                    <input type="hidden" name="page" value="null">
-                    <button type="submit" class="px-4 py-2 text-sm rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Toute</button>
-                </form>
-            
-                <form action="{{ route('readAll.properties') }}" method="GET" class="inline-block">
-                    @csrf
-                    <input type="hidden" name="page" value="5">
-                    <button type="submit" class="px-4 py-2 text-sm rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">5 éléments</button>
-                </form>
-            
-                <form action="{{ route('readAll.properties') }}" method="GET" class="inline-block">
-                    @csrf
-                    <input type="hidden" name="page" value="10">
-                    <button type="submit" class="px-4 py-2 text-sm rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">10 éléments</button>
-                </form>
-            
-                <form action="{{ route('readAll.properties') }}" method="GET" class="inline-block">
-                    @csrf
-                    <input type="hidden" name="page" value="15">
-                    <button type="submit" class="px-4 py-2 text-sm rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">15 éléments</button>
-                </form>
-            </div>
-            
+                <select name="perPage" id="pagination" class="px-4 py-2 text-sm rounded-full border border-gray-300 transition-colors" onchange="this.form.submit()">
+                    <option value="2" {{ request('perPage') == '2' ? 'selected' : '' }}>5 éléments</option>
+                    <option value="10" {{ request('perPage') == '10' ? 'selected' : '' }}>10 éléments</option>
+                    <option value="15" {{ request('perPage') == '15' ? 'selected' : '' }}>15 éléments</option>
+                </select>
+            </form>
         </div>
+        
 
         <!-- Properties Grid -->
         <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3  gap-6">
@@ -193,8 +219,10 @@
             
             @endforeach
         </div>
-        <div class="flex justify-center mt-4">
-            {{ $properties->links() }}
+        <div class="mt-10 flex justify-center">
+            <div class="bg-white rounded-lg shadow-sm p-2 inline-flex">
+                {{ $properties->links()}}
+            </div>
         </div>
     </main>
     @include('auth.alert');

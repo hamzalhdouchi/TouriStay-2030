@@ -223,24 +223,21 @@
                 <!-- Formulaire d'ajout -->
                 <div class="bg-white rounded-lg shadow p-6">
                     <h2 class="text-xl font-semibold mb-4">Informations de la Propriété</h2>
-                    <form class="space-y-4"
-                        action="{{ route('properties.create') }}"
-                        method="POST"
-                         enctype="multipart/form-data"
-                        >
+                    <form class="space-y-4" action="{{ route('properties.create') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <!-- Informations de base -->
-                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                        
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Titre de la propriété</label>
                             <input type="text" name="titre" class="w-full border border-gray-300 rounded-md px-3 py-2" placeholder="Villa avec vue sur mer">
                         </div>
-    
+                    
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
                             <textarea name="description" class="w-full border border-gray-300 rounded-md px-3 py-2 h-24" placeholder="Description détaillée de la propriété..."></textarea>
                         </div>
-    
+                    
                         <!-- Prix et détails -->
                         <div class="grid grid-cols-2 gap-4">
                             <div>
@@ -252,7 +249,7 @@
                                 <input type="number" name="caution" class="w-full border border-gray-300 rounded-md px-3 py-2" placeholder="500">
                             </div>
                         </div>
-    
+                    
                         <!-- Caractéristiques -->
                         <div class="grid grid-cols-2 gap-4">
                             <div>
@@ -264,7 +261,13 @@
                                 <input type="number" name="salles_de_bain" class="w-full border border-gray-300 rounded-md px-3 py-2" placeholder="1">
                             </div>
                         </div>
-    
+                    
+                        <!-- Date -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Date d'entrée</label>
+                            <input type="date" name="date_entree" class="w-full border border-gray-300 rounded-md px-3 py-2">
+                        </div>
+                    
                         <!-- Adresse -->
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Adresse</label>
@@ -274,21 +277,20 @@
                                 <input type="number" name="code_postal" class="border border-gray-300 rounded-md px-3 py-2" placeholder="Code postal">
                             </div>
                         </div>
-    
+                    
                         <!-- Équipements -->
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Équipements</label>
                             <div class="grid grid-cols-2 gap-2">
                                 @foreach ($équipements as $equipment)
-                                
-                                <label class="flex items-center space-x-2">
-                                    <input type="checkbox" name="equipments[]" value="{{ $equipment->id }}" class="rounded text-red-600">
-                                    <span> {{ $equipment->name }}</span>
-                                </label>
-                            @endforeach
+                                    <label class="flex items-center space-x-2">
+                                        <input type="checkbox" name="equipments[]" value="{{ $equipment->id }}" class="rounded text-red-600">
+                                        <span> {{ $equipment->name }}</span>
+                                    </label>
+                                @endforeach
                             </div>
                         </div>
-    
+                    
                         <!-- Photos -->
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Photos</label>
@@ -299,7 +301,7 @@
                                 </label>
                             </div>
                         </div>
-    
+                    
                         <!-- Boutons -->
                         <div class="flex justify-end space-x-3">
                             <button type="button" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
@@ -310,6 +312,7 @@
                             </button>
                         </div>
                     </form>
+                    
                 </div>
 
             </div>
