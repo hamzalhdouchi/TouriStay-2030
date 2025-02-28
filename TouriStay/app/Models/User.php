@@ -55,9 +55,8 @@ class User extends Authenticatable
         return $this->hasMany(properties::class);
     }
     
-    public function property()
+    public function favoris()
     {
-        return $this->belongsToMany(properties::class, 'favori', 'user_id',  'proprietaire_id');
-
+        return $this->belongsToMany(Properties::class, 'favori', 'user_id', 'propertie_id');
     }
 }

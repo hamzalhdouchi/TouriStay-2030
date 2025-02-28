@@ -132,19 +132,45 @@ class propertiesController extends Controller
 
         public function readAllProperties($n = null)
         {
+
+            $user = Auth::user();
+
+            
+            $favoris = $user->favoris->pluck('id');
             if ($n == null) {
-                $properties = properties::with('equipments')->get(); 
+                $properties = Properties::with('equipments', 'favoris')->get();
             } else {
-                $properties = properties::with('equipments')->paginate($n); 
+                $properties = Properties::with('equipments', 'favoris')->paginate($n);
             }
-            return view('Home', compact('properties'));
+; 
+
+            return view('Home', compact('properties','favoris'));
         }
         
+        
 
-        public function favoreCreate()
+        public function favoriteCreate($id)
         {
-            
+            $user = Auth::user();
+            if ($user) {
+                $user->favoris()->attach($id);
+                session()->flash('success', 'Ajouté aux favoris!');
+            } else {
+                session()->flash('error', 'Veuillez vous connecter.');
+            }
+    
+            return back();
         }
+
+        public function removeFavorite($id)
+        {
+            $user = Auth::user();
+
+            $user->favoris()->detach($id);  
+
+            return back();
+        }
+
     }
     
 

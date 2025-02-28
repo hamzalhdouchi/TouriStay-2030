@@ -37,9 +37,9 @@ class properties extends Model
     }
     
 
-    public function users()
+    public function favoris()
     {
-        return $this->belongsToMany(User::class, 'favori', 'proprietaire_id',  'user_id');
+        return $this->belongsToMany(User::class, 'favori', 'propertie_id',  'user_id');
     }
 
 }

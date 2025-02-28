@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('favori', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId( 'proprietaire_id')->constrained('proprietaire');
+            $table->foreignId( 'propertie_id')->constrained('properties');
             $table->timestamps();
         });
     }
