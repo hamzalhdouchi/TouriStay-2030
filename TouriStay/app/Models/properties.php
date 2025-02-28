@@ -37,4 +37,9 @@ class properties extends Model
     }
     
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'favori', 'proprietaire_id',  'user_id');
+    }
+
 }

@@ -107,7 +107,7 @@ class propertiesController extends Controller
             }
 
             if ($request->has('image')) {
-                // unlink(storage_path("app/" . $propertie->image));
+                unlink(storage_path("app/" . $propertie->image));
                 $imagePath = $request->file('image')->store('public/properties'); 
              }
             $propertie->titre = $request->titre;
@@ -133,15 +133,18 @@ class propertiesController extends Controller
         public function readAllProperties($n = null)
         {
             if ($n == null) {
-                $properties = properties::all();
-                return view('Home',compact('properties'));
-            }else{
-                $properties = properties::paginate($n);
-                return view('Home',compact('properties'));
+                $properties = properties::with('equipments')->get(); 
+            } else {
+                $properties = properties::with('equipments')->paginate($n); 
             }
-            
+            return view('Home', compact('properties'));
         }
         
+
+        public function favoreCreate()
+        {
+            
+        }
     }
     
 

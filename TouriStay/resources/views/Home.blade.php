@@ -151,210 +151,65 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-6">
             <!-- Property Card 1 -->
             <!-- Carte de prévisualisation-->
-            <div class="bg-white rounded-lg shadow overflow-hidden">
-                <img src="/api/placeholder/800/400" alt="Aperçu de la propriété" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h3 class="text-xl font-semibold">Villa avec vue sur mer</h3>
-                            <p class="text-gray-500">Paris, France</p>
-                        </div>
-                        <div class="text-2xl font-bold text-red-600">150 €<span class="text-sm text-gray-500">/nuit</span></div>
-                    </div>
-
-                    <div class="mt-4">
-                        <p class="text-gray-600">Description détaillée de la propriété...</p>
-                    </div>
-
-                    <div class="mt-4 flex space-x-4">
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-gray-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                            </svg>
-                            <span>2 chambres</span>
-                        </div>
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-gray-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                            </svg>
-                            <span>1 salle de bain</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-4">
-                        <h4 class="font-medium mb-2">Équipements</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-gray-100 rounded-full text-sm">WiFi</span>
-                            <span class="px-2 py-1 bg-gray-100 rounded-full text-sm">Climatisation</span>
-                            <span class="px-2 py-1 bg-gray-100 rounded-full text-sm">Piscine</span>
-                            <span class="px-2 py-1 bg-gray-100 rounded-full text-sm">Parking</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-6 flex justify-end">
-                        <button class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">
-                            Voir les détails
-                        </button>
-                    </div>
-                </div>
-            </div> 
-
-            <!-- Property Card 2 -->
-            <!-- Carte de prévisualisation-->
-            <div class="bg-white rounded-lg shadow overflow-hidden">
-                <img src="/api/placeholder/800/400" alt="Aperçu de la propriété" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h3 class="text-xl font-semibold">Villa avec vue sur mer</h3>
-                            <p class="text-gray-500">Paris, France</p>
-                        </div>
-                        <div class="text-2xl font-bold text-red-600">150 €<span class="text-sm text-gray-500">/nuit</span></div>
-                    </div>
-
-                    <div class="mt-4">
-                        <p class="text-gray-600">Description détaillée de la propriété...</p>
-                    </div>
-
-                    <div class="mt-4 flex space-x-4">
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-gray-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                            </svg>
-                            <span>2 chambres</span>
-                        </div>
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-gray-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                            </svg>
-                            <span>1 salle de bain</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-4">
-                        <h4 class="font-medium mb-2">Équipements</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-gray-100 rounded-full text-sm">WiFi</span>
-                            <span class="px-2 py-1 bg-gray-100 rounded-full text-sm">Climatisation</span>
-                            <span class="px-2 py-1 bg-gray-100 rounded-full text-sm">Piscine</span>
-                            <span class="px-2 py-1 bg-gray-100 rounded-full text-sm">Parking</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-6 flex justify-end">
-                        <button class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">
-                            Voir les détails
-                        </button>
-                    </div>
-                </div>
-            </div> 
-
-            <!-- Property Card 3 -->
-            <!-- Carte de prévisualisation -->
-            <div class="bg-white rounded-lg shadow overflow-hidden">
-                <img src="/api/placeholder/800/400" alt="Aperçu de la propriété" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h3 class="text-xl font-semibold">Villa avec vue sur mer</h3>
-                            <p class="text-gray-500">Paris, France</p>
-                        </div>
-                        <div class="text-2xl font-bold text-red-600">150 €<span class="text-sm text-gray-500">/nuit</span></div>
-                    </div>
-
-                    <div class="mt-4">
-                        <p class="text-gray-600">Description détaillée de la propriété...</p>
-                    </div>
-
-                    <div class="mt-4 flex space-x-4">
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-gray-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
-                            </svg>
-                            <span>2 chambres</span>
-                        </div>
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-gray-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                            </svg>
-                            <span>1 salle de bain</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-4">
-                        <h4 class="font-medium mb-2">Équipements</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-gray-100 rounded-full text-sm">WiFi</span>
-                            <span class="px-2 py-1 bg-gray-100 rounded-full text-sm">Climatisation</span>
-                            <span class="px-2 py-1 bg-gray-100 rounded-full text-sm">Piscine</span>
-                            <span class="px-2 py-1 bg-gray-100 rounded-full text-sm">Parking</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-6 flex justify-end">
-                        <button class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">
-                            Voir les détails
-                        </button>
-                    </div>
-                </div>
-            </div> 
-
-            <!-- Property Card 4 -->
+            @foreach ($properties as $propertie)
+            <div class="bg-white rounded-lg shadow overflow-hidden relative">
+                <img src="{{ asset( 'storage/' . $propertie->image) }}" alt="Aperçu de la propriété" class="w-full h-48 object-cover">
+                
+                <form action="{{route('favore.create',$propertie->id)}}"  method="POST">
+                    
+                    <button type="submit" class="absolute top-2 right-2 bg-white text-red-600 rounded-full p-2 hover:text-red-700">
+                </form>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                    </svg>
+                </button>
             
-            <div class="bg-white rounded-lg shadow overflow-hidden">
-                <img src="/api/placeholder/800/400" alt="Aperçu de la propriété" class="w-full h-48 object-cover">
                 <div class="p-6">
                     <div class="flex justify-between items-start">
                         <div>
-                            <h3 class="text-xl font-semibold">Villa avec vue sur mer</h3>
-                            <p class="text-gray-500">Paris, France</p>
+                            <h3 class="text-xl font-semibold">{{$propertie->titre}}</h3>
+                            <p class="text-gray-500">{{$propertie->adresse}}, {{$propertie->ville}}</p>
                         </div>
-                        <div class="text-2xl font-bold text-red-600">150 €<span
-                                class="text-sm text-gray-500">/nuit</span></div>
+                        <div class="text-2xl font-bold text-red-600">{{$propertie->prix_par_nuit}} €<span class="text-sm text-gray-500">/nuit</span></div>
                     </div>
-
+            
                     <div class="mt-4">
-                        <p class="text-gray-600">Description détaillée de la propriété...</p>
+                        <p class="text-gray-600">{{$propertie->description}}</p>
                     </div>
-
+            
                     <div class="mt-4 flex space-x-4">
                         <div class="flex items-center">
-                            <svg class="w-5 h-5 text-gray-500 mr-1" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                                </path>
+                            <svg class="w-5 h-5 text-gray-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                             </svg>
-                            <span>2 chambres</span>
+                            <span>{{$propertie->chambres}} chambres</span>
                         </div>
                         <div class="flex items-center">
-                            <svg class="w-5 h-5 text-gray-500 mr-1" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
-                                </path>
+                            <svg class="w-5 h-5 text-gray-500 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
-                            <span>1 salle de bain</span>
+                            <span>{{$propertie->salles_de_bain}} salle de bain</span>
                         </div>
                     </div>
-
+            
                     <div class="mt-4">
                         <h4 class="font-medium mb-2">Équipements</h4>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-gray-100 rounded-full text-sm">WiFi</span>
-                            <span class="px-2 py-1 bg-gray-100 rounded-full text-sm">Climatisation</span>
-                            <span class="px-2 py-1 bg-gray-100 rounded-full text-sm">Piscine</span>
-                            <span class="px-2 py-1 bg-gray-100 rounded-full text-sm">Parking</span>
+                            @foreach ($propertie->equipments as $equipment)
+                            <span class="px-2 py-1 bg-gray-100 rounded-full text-sm">{{$equipment->name}}</span>
+                            @endforeach
                         </div>
                     </div>
-
+            
                     <div class="mt-6 flex justify-end">
                         <button class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">
                             Voir les détails
                         </button>
                     </div>
                 </div>
-            </div> -->
+            </div>
+            
+            @endforeach
         </div>
     </main>
 </body>

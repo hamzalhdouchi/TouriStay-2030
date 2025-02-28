@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -54,4 +55,9 @@ class User extends Authenticatable
         return $this->hasMany(properties::class);
     }
     
+    public function property()
+    {
+        return $this->belongsToMany(properties::class, 'favori', 'user_id',  'proprietaire_id');
+
+    }
 }

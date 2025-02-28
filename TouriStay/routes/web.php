@@ -44,6 +44,8 @@ Route::delete( '/destroy/{id}', [propertiesController::class, 'destroy'])->name(
 Route::patch('/update/{id}', [propertiesController::class, 'update'])->name('update.properties');
 Route::get('/Home/{id}', [propertiesController::class, 'readAllProperties'])->name('readAll.properties');
 Route::get('/Home', [propertiesController::class, 'readAllProperties'])->name('readAll.properties');
+Route::get('/favore/{id}', [propertiesController::class, 'readAllProperties'])->name('favore.create');
+
 
 Route::middleware('auth')->group(function () {
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
