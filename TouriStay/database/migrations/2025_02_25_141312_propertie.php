@@ -25,7 +25,7 @@ return new class extends Migration
         $table->string('code_postal');
         $table->boolean('disponibilite')->default(0);
         $table->string('image');
-        $table->foreignId('user_id')->constrained('users');
+        $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
         
         $table->timestamps();
     });

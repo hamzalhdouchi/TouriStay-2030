@@ -34,13 +34,19 @@ Route::get('/inscrer', function () {
 // //     return view('dashboard');
 
 // })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
 Route::post('/store',[userController::class,'store'])->name('create_user');
 Route::post('/login', [UserController::class, 'login'])->name('user.login');
 Route::get('/dashboard', [AdminController::class, 'read'])->name('user.read');
+Route::post('/logout', [UserController::class, 'logout'])->name('user.logout');
 Route::post('/properties', [propertiesController::class, 'create'])->name('properties.create');
 Route::get( '/properties', [propertiesController::class, 'readPropretis'])->name('properties.read');
+Route::get( '/properties', [AdminController::class, 'readPropretis'])->name('properties.readAdmin');
 Route::post( '/modifer/{id}', [propertiesController::class, 'propertiesById'])->name('propertie.modifer');
 Route::delete( '/destroy/{id}', [propertiesController::class, 'destroy'])->name('propertie.destroy');
+Route::delete( '/destroye/{id}', [AdminController::class, 'destroyProperties'])->name('propertie.destroyProperties');
+
 Route::patch('/update/{id}', [propertiesController::class, 'update'])->name('update.properties');
 Route::get('/Home', [propertiesController::class, 'readAllProperties'])->name('readAll.properties');
 Route::POST('/favore/{id}', [propertiesController::class, 'favoriteCreate'])->name('favore.create');
@@ -49,7 +55,6 @@ Route::get('/favoris', [propertiesController::class, 'showFavoris'])->name('favo
 Route::get('/search', [propertiesController::class, 'dynamicSearch'])->name('properties.dynamicSearch');
 
 
-Route::middleware('auth')->group(function () {
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
