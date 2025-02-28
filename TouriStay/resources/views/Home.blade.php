@@ -55,11 +55,13 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
-                        <svg class="h-6 w-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z">
-                            </path>
-                        </svg>
+                        <a href="{{route('user.Profile')}}">
+                            <svg class="h-6 w-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                                </path>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -67,88 +69,60 @@
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 max-w-7xl py-6">
+    <main class="container mx-auto px-4 max-w-full pl-10 pr-10 py-6">
         <!-- Search Bar -->
         <div class="relative mb-8">
-            <div
-                class="flex items-center justify-between bg-white rounded-full border border-gray-300 shadow-lg hover:shadow-xl transition-shadow">
+            <form method="GET" action="{{ route('properties.dynamicSearch') }}" class="flex items-center justify-between bg-white rounded-full border border-gray-300 shadow-lg hover:shadow-xl transition-shadow">
                 <div class="flex-grow flex items-center">
-                    <div class="py-3  px-8 ">
+                    <div class="py-3 px-8">
                         <div class="text-sm font-medium">Destination</div>
-                        <input type="text" placeholder="Où souhaitez-vous aller ?"
-                            class="w-full outline-none text-gray-600">
+                        <input type="text" name="search" value="{{ request('search') }}" placeholder="Où souhaitez-vous aller ?" class="w-full outline-none text-gray-600">
                     </div>
                 </div>
-                <button
-                    class="bg-airbnb hover:bg-airbnb-dark text-white p-4 m-2 rounded-full flex items-center justify-center transition-colors">
+                <button class="bg-airbnb hover:bg-airbnb-dark text-white p-4 m-2 rounded-full flex items-center justify-center transition-colors">
                     <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
                     <span class="ml-2 font-medium">Rechercher</span>
                 </button>
-            </div>
+            </form>
         </div>
+        
 
         <!-- Filters -->
         <div class="overflow-x-auto pb-4 mb-8">
             <div class="flex space-x-4">
-                <button
-                    class="px-4 py-2 text-sm rounded-full border border-gray-300 hover:bg-gray-100 flex items-center transition-colors">
-                    <span>Prix</span>
-                    <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <button
-                    class="px-4 py-2 text-sm rounded-full border border-gray-300 hover:bg-gray-100 flex items-center transition-colors">
-                    <span>Type de logement</span>
-                    <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                <button
-                    class="px-4 py-2 text-sm rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">
-                    Vue sur la mer
-                </button>
-                <button
-                    class="px-4 py-2 text-sm rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">
-                    Piscine
-                </button>
-                <button
-                    class="px-4 py-2 text-sm rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">
-                    Climatisation
-                </button>
-                <button
-                    class="px-4 py-2 text-sm rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">
-                    WiFi
-                </button>
-                <button
-                    class="px-4 py-2 text-sm rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">
-                    Cuisine
-                </button>
-                <button
-                    class="px-4 py-2 text-sm rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">
-                    Parking gratuit
-                </button>
-                <button
-                    class="px-4 py-2 text-sm rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">
-                    Animaux acceptés
-                </button>
-                <button
-                    class="px-4 py-2 text-sm rounded-full border border-gray-300 bg-gray-100 flex items-center transition-colors">
-                    <span>Tous les filtres</span>
-                    <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4">
-                        </path>
-                    </svg>
-                </button>
+                <label for="pagination" class="text-sm font-medium">Afficher par :</label>
+                
+                <form action="{{ route('readAll.properties') }}" method="GET" class="inline-block">
+                    @csrf
+                    <input type="hidden" name="page" value="null">
+                    <button type="submit" class="px-4 py-2 text-sm rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">Toute</button>
+                </form>
+            
+                <form action="{{ route('readAll.properties') }}" method="GET" class="inline-block">
+                    @csrf
+                    <input type="hidden" name="page" value="5">
+                    <button type="submit" class="px-4 py-2 text-sm rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">5 éléments</button>
+                </form>
+            
+                <form action="{{ route('readAll.properties') }}" method="GET" class="inline-block">
+                    @csrf
+                    <input type="hidden" name="page" value="10">
+                    <button type="submit" class="px-4 py-2 text-sm rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">10 éléments</button>
+                </form>
+            
+                <form action="{{ route('readAll.properties') }}" method="GET" class="inline-block">
+                    @csrf
+                    <input type="hidden" name="page" value="15">
+                    <button type="submit" class="px-4 py-2 text-sm rounded-full border border-gray-300 hover:bg-gray-100 transition-colors">15 éléments</button>
+                </form>
             </div>
+            
         </div>
 
         <!-- Properties Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 gap-6">
+        <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3  gap-6">
             <!-- Property Card 1 -->
             <!-- Carte de prévisualisation-->
             @foreach ($properties as $propertie)
@@ -158,13 +132,13 @@
                 <form action="{{ route('favore.remove', $propertie->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="absolute top-2 right-2 bg-white text-gray-600 rounded-full p-2 hover:text-gray-700">
+                    <button type="submit" class="absolute top-2 right-2 bg-white text-red-600 rounded-full p-4 hover:text-red-700">
                 </form> 
                
                 @else
                 <form action="{{route('favore.create',$propertie->id)}}"  method="POST">
                     @csrf
-                    <button type="submit" class="absolute top-2 right-2 bg-white text-red-600 rounded-full p-2 hover:text-red-700">
+                    <button type="submit" class="absolute top-2 right-2 bg-white text-gray-600 rounded-full p-4 hover:gray-red-700">
                 </form>
                 @endif
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -219,7 +193,11 @@
             
             @endforeach
         </div>
+        <div class="flex justify-center mt-4">
+            {{ $properties->links() }}
+        </div>
     </main>
+    @include('auth.alert');
 </body>
 
 </html>

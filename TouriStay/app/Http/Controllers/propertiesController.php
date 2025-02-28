@@ -57,15 +57,15 @@ class propertiesController extends Controller
 
         public function readPropretis()
         {
-            $properties = properties::paginate(6);
-            $équipements  = equipments::all()->where(Auth::id());
+            $properties = properties::all();
+            $équipements  = equipments::all();
            
             return view('location',compact('properties','équipements'));
         }
 
         public function propertiesById($id)
         {
-            $propertie = properties::find(2);
+            $propertie = properties::find($id);
             $équipements  = equipments::all();
         
             return view('form',compact('propertie','équipements'));
@@ -130,21 +130,19 @@ class propertiesController extends Controller
             return redirect('/properties');
         }
 
-        public function readAllProperties($n = null)
+        public function readAllProperties(Request $request)
         {
-
+            
             $user = Auth::user();
-
+            $n = $request->page ?? 100; 
             
             $favoris = $user->favoris->pluck('id');
-            if ($n == null) {
-                $properties = Properties::with('equipments', 'favoris')->get();
-            } else {
-                $properties = Properties::with('equipments', 'favoris')->paginate($n);
-            }
-; 
 
-            return view('Home', compact('properties','favoris'));
+            $properties = Properties::with('equipments', 'favoris')->paginate($n);
+            // if ($properties->currentPage() > $properties->lastPage()) {
+            //     return redirect()->route('readAll.properties', ['page' => $properties->lastPage()]);
+            // }
+            return view('Home', compact('properties', 'favoris'));
         }
         
         
@@ -171,6 +169,24 @@ class propertiesController extends Controller
             return back();
         }
 
+        public function showFavoris()
+        {
+            $user = Auth::user();  
+            $favoris = $user->favoris;  
+
+            return view('favori', compact('favoris'));
+        }
+
+        public function dynamicSearch(Request $request)
+        {
+            $search = $request->input('search');  
+            $properties = Properties::where('titre', 'like', "%{$search}%")
+                                    ->orWhere('description', 'like', "%{$search}%")
+                                    ->paginate(5);  
+                                    $favoris = Auth::user()->favoris->pluck('id');
+            return view('Home', compact('properties', 'search','favoris'));
+        }
+        
     }
     
 

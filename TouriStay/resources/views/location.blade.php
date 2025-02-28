@@ -280,7 +280,7 @@
                             <label class="block text-sm font-medium text-gray-700 mb-2">Équipements</label>
                             <div class="grid grid-cols-2 gap-2">
                                 @foreach ($équipements as $equipment)
-        
+                                
                                 <label class="flex items-center space-x-2">
                                     <input type="checkbox" name="equipments[]" value="{{ $equipment->id }}" class="rounded text-red-600">
                                     <span> {{ $equipment->name }}</span>

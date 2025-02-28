@@ -102,7 +102,7 @@ class UserController extends Controller
     $user->save();
 
     session()->flash('success', 'Profile updated successfully');
-    return redirect('/');
+    return back();
         
     }
 }

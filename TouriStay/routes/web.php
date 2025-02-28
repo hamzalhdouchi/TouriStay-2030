@@ -39,13 +39,14 @@ Route::post('/login', [UserController::class, 'login'])->name('user.login');
 Route::get('/dashboard', [AdminController::class, 'read'])->name('user.read');
 Route::post('/properties', [propertiesController::class, 'create'])->name('properties.create');
 Route::get( '/properties', [propertiesController::class, 'readPropretis'])->name('properties.read');
-Route::get( '/modifer/{id}', [propertiesController::class, 'propertiesById'])->name('propertie.modifer');
+Route::post( '/modifer/{id}', [propertiesController::class, 'propertiesById'])->name('propertie.modifer');
 Route::delete( '/destroy/{id}', [propertiesController::class, 'destroy'])->name('propertie.destroy');
 Route::patch('/update/{id}', [propertiesController::class, 'update'])->name('update.properties');
-Route::get('/Home/{id}', [propertiesController::class, 'readAllProperties'])->name('readAll.properties');
 Route::get('/Home', [propertiesController::class, 'readAllProperties'])->name('readAll.properties');
 Route::POST('/favore/{id}', [propertiesController::class, 'favoriteCreate'])->name('favore.create');
 Route::delete('/favorites/{id}', [propertiesController::class, 'removeFavorite'])->name('favore.remove');
+Route::get('/favoris', [propertiesController::class, 'showFavoris'])->name('favoris.index');
+Route::get('/search', [propertiesController::class, 'dynamicSearch'])->name('properties.dynamicSearch');
 
 
 Route::middleware('auth')->group(function () {
